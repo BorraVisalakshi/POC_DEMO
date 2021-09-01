@@ -23,3 +23,7 @@ jobs:
       run: |
            cd HelloWorld;
            mvn -B package --file pom.xml
+    - name: Scan with sonar
+      run: |
+          cd HelloWorld;
+          mvn sonar:sonar '-Dsonar.projectKey=HelloWolrd' '-Dsonar.host.url=http://localhost:9000' '-Dsonar.login=3410f6d6a8da5d6551cfbaec88465e63394e3a91'
