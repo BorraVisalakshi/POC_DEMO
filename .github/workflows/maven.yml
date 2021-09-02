@@ -5,6 +5,11 @@ name: Java CI with Maven
 
 on:
   workflow_dispatch:
+   inputs:
+    greet:
+     description: Greet User
+     required: true
+     default: ''
 
 jobs:
   build:
@@ -12,18 +17,22 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v2
+    
+    - name: Checkout the code
+      uses: actions/checkout@v2
+      
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
+    
     - name: Build with Maven
       run: |
            cd HelloWorld;
            mvn -B package --file pom.xml
-    - name: Scan with sonar
-      run: |
-          cd HelloWorld;
-          mvn sonar:sonar '-Dsonar.projectKey=HelloWolrd' '-Dsonar.host.url=http://localhost:9000' '-Dsonar.login=3410f6d6a8da5d6551cfbaec88465e63394e3a91'
+    
+    - name: Greet user
+      run: echo '${{github.event.inputs.greet}}'
+   
