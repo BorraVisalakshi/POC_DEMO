@@ -12,7 +12,8 @@ on:
      default: ''
 
 jobs:
-  build:
+# Job#1
+  Build:
 
     runs-on: self-hosted
     env:
@@ -30,7 +31,13 @@ jobs:
       run: |
            cd HelloWorld;
            mvn -B package --file pom.xml
-    
+  
+# Job#2
+  Greet:
+   needs: [Build]
+   runs-on: self-hosted
+   steps:
+   
     - name: Greet user
       run: echo '${{github.event.inputs.greet}}'
    
