@@ -31,6 +31,17 @@ jobs:
       run: |
            cd HelloWorld;
            mvn -B package --file pom.xml
+     
+    - name: Sonar Scan
+      
+      env:
+         
+          GITHUB_TOKEN: ${{ secrets.PAT }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: |
+          cd HelloWorld;
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
   
 # Job#2
   Greet:
@@ -41,14 +52,4 @@ jobs:
     - name: Greet user
       run: echo '${{github.event.inputs.greet}}'
   
-    - name: Sonar Scan
-      
-      env:
-         
-          JAVA_HOME: C:\Program Files\Java\jdk-11.0.10-  
-          GITHUB_TOKEN: ${{ secrets.PAT }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: |
-          cd HelloWorld;
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+   
