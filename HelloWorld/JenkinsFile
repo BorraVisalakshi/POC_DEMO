@@ -5,8 +5,8 @@ node {
   stage('SonarQube Analysis') {
     //def mvn = tool 'Default Maven';
     withSonarQubeEnv() {
-     // sh "${mvn}/bin/mvn sonar:sonar"
-     bat "mvn sonar:sonar"
+     // sh "${mvn}/bin/mvnsonar:sonar"
+     bat "mvn -f C:\Users\Jenkins\workspace\SonarQube_Pipeline\HelloWorld\pom.xml sonar:sonar"
     }
   }
 }
