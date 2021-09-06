@@ -44,6 +44,8 @@ jobs:
     - name: Sonar Scan
       
       env:
+         
+          JAVA_HOME: C:\Program Files\Java\jdk-11.0.10-  
           GITHUB_TOKEN: ${{ secrets.PAT }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
