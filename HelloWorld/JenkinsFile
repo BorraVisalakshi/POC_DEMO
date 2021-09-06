@@ -6,7 +6,7 @@ node {
     //def mvn = tool 'Default Maven';
     withSonarQubeEnv() {
      // sh "${mvn}/bin/mvn sonar:sonar"
-     bat "mvn sonar:sonar '-Dsonar.login=b68f58b9b31d9630a655d563d1af1bce43fb7db8'"
+     bat "mvn sonar:sonar"
     }
   }
 }
