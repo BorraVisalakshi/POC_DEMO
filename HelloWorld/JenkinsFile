@@ -6,7 +6,7 @@ node {
     //def mvn = tool 'Default Maven';
     withSonarQubeEnv() {
      // sh "${mvn}/bin/mvnsonar:sonar"
-     bat "mvn --file \HelloWorld\pom.xml sonar:sonar"
+     bat "mvn --file /HelloWorld/pom.xml sonar:sonar"
     }
   }
 }
