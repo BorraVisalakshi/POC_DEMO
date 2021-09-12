@@ -5,12 +5,7 @@ name: Java CI with Maven
 
 on:
   workflow_dispatch:
-   inputs:
-    greet:
-     description: Greet User
-     required: true
-     default: ''
-
+   
 jobs:
 # Job#1
   Build:
@@ -30,26 +25,11 @@ jobs:
     - name: Build with Maven
       run: |
            cd HelloWorld;
-           mvn -B package --file pom.xml
-     
-    - name: Sonar Scan
-      
-      env:
-         
-          GITHUB_TOKEN: ${{ secrets.PAT }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: |
-          cd HelloWorld;
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-  
-# Job#2
-  Greet:
-   needs: [Build]
-   runs-on: self-hosted
-   steps:
-   
-    - name: Greet user
-      run: echo '${{github.event.inputs.greet}}'
+           mvn clean install
+           
+    #- name: Upload to Artifactory
+    #  run:  Remove-item alias:curl;
+     #       curl -X PUT -u ${{ secrets.USER }}:${{ secrets.PASSWORD }} -T C:\Artifactory\Actions\ArtifactoryRepo\Artifactory\Artifactory\target\SubmissionDataForm-0.0.1-SNAPSHOT.jar "http://localhost:8082/artifactory/CG-libs-release-local/SubmissionDataForm-0.0.1-SNAPSHOT.jar"
+
   
    
