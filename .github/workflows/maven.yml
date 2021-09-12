@@ -27,13 +27,13 @@ jobs:
            cd HelloWorld;
            mvn clean install
            
-    - name: Upload to Artifactory
-      run:  Remove-item alias:curl;
-            curl -X PUT -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} -T C:\GitHub_Actions\POC_DEMO\actions-runner-win-x64-2.281.0\Workspace_POC\POC_DEMO\POC_DEMO\HelloWorld\target\HelloWorld.war "http://localhost:8082/artifactory/CG-libs-release-local/POC/HelloWorld.war"
+   # - name: Upload to Artifactory
+     # run:  Remove-item alias:curl;
+         #   curl -X PUT -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} -T C:\GitHub_Actions\POC_DEMO\actions-runner-win-x64-2.281.0\Workspace_POC\POC_DEMO\POC_DEMO\HelloWorld\target\HelloWorld.war "http://localhost:8082/artifactory/CG-libs-release-local/POC/HelloWorld.war"
    
-    - name: Download Artifact from Artifactory
-      run: Remove-item alias:curl;
-           curl -o C:\GitHub_Actions\POC_DEMO\HelloWorld.war -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} "http://localhost:8082/artifactory/CG-libs-release-local/POC/HelloWorld.war"
+   # - name: Download Artifact from Artifactory
+    #  run: Remove-item alias:curl;
+      #     curl -o C:\GitHub_Actions\POC_DEMO\HelloWorld.war -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} "http://localhost:8082/artifactory/CG-libs-release-local/POC/HelloWorld.war"
    
   
    
