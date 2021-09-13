@@ -28,7 +28,8 @@ jobs:
       
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'dd/MM/yyyy')"
+      #run: echo "::set-output name=date::$(date +'dd/MM/yyyy')"
+      run:  echo "::set-output name=date::$( Get-Date -Format "MM/dd/yyyy HH:mm K")"
       
     - name: Build with Maven
       run: |
