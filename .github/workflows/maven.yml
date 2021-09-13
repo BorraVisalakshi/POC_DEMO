@@ -4,7 +4,12 @@
 name: Java CI with Maven
 
 on:
-  push:
+  workflow_dispatch:
+   inputs:
+    Type:
+     description: 'Enter the type of Artifact'
+     required: true
+     default: ''
    
 jobs:
 # Job#1
@@ -25,7 +30,8 @@ jobs:
     - name: Build with Maven
       run: |
            cd HelloWorld;
-           mvn clean install
+           echo "Type is: ${github.event.inputs.Type}"
+           mvn clean install -Ddate=${date} -Dtype=${github.event.inputs.Type}
            
     - name: Upload to Artifactory
       run:  Remove-item alias:curl;
