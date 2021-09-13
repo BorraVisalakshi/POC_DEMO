@@ -39,7 +39,7 @@ jobs:
            
     - name: Upload to Artifactory
       run:  Remove-item alias:curl;
-            curl -X PUT -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} -T C:\Runner\actions-runner-win-x64-2.280.3\_work\POC_DEMO\POC_DEMO\HelloWorld\target\HelloWorld.war "http://localhost:8082/artifactory/CG_AEP-libs-release-local/POC/HelloWorld-0.0.1-SNAPSHOT_ 09\13\2021_AS_IS.war"
+            curl -X PUT -u ${{ secrets.ARTIFACTORY_USER }}:${{ secrets.ARTIFACTORY_PASSWORD }} -T C:\Runner\actions-runner-win-x64-2.280.3\_work\POC_DEMO\POC_DEMO\HelloWorld\target\HelloWorld.war "http://localhost:8082/artifactory/CG_AEP-libs-release-local/POC/HelloWorld-0.0.1-SNAPSHOT_ 09-13-2021_AS_IS.war"
    
     - name: Download Artifact from Artifactory
       run: Remove-item alias:curl;
