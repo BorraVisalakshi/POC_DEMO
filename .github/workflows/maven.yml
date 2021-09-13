@@ -30,8 +30,8 @@ jobs:
     - name: Build with Maven
       run: |
            cd HelloWorld;
-           echo "Type is: ${github.event.inputs.Type}"
-           mvn clean install '-Dtype=${github.event.inputs.Type}'
+           echo "Type is: ${{ github.event.inputs.Type }}"
+           mvn clean install '-Dtype=${{ github.event.inputs.Type }}'
            
     - name: Upload to Artifactory
       run:  Remove-item alias:curl;
