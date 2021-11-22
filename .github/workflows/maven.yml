@@ -39,7 +39,7 @@ jobs:
     - name: Veracode scan
       uses: veracode/veracode-uploadandscan-action@master
       with:
-        filepath: '/HelloWorld'
+        filepath: 'POC_DEMO/HelloWorld/target/'
         vid: 'eb2e5e1210cf22ea1f46302694d7e34c'
         vkey: '189c653a023307de5b4aab640a8c77fef4707d3a90814239c03ca7c1cbaa8e8ca49c565a86078d746c9b49de21c24a65229ae1a1a0514a090cc73ea07ca810aa'
         createsandbox: 'true'
