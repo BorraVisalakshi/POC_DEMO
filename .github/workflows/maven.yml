@@ -57,7 +57,11 @@ jobs:
           blackduck.api.token: ZjJlNTFkMmItNmNiMS00NmI2LTk3NTYtZDA2ZDZlODRmYWYxOmViODg0NTE4LTNkZmItNDNmNy04MjI1LTQwNjNlOWY3MzIzOQ==
           args: --detect.risk.report.pdf=true
     
-     
+    - name: coveirty Scan
+      uses: vapier/coverity-scan-action@v0
+      with:
+        project: HelloWorld
+        token: ${{secrets.COVERITY_TOKEN}}
         
         
         
