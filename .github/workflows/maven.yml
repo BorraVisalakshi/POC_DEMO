@@ -36,15 +36,32 @@ jobs:
            cd HelloWorld;
            echo "Type is: ${{ github.event.inputs.Type }}"
            mvn clean install '-Ddate= ${{ steps.date.outputs.date }}' '-Dtype=${{ github.event.inputs.Type }}'
-    - name: Veracode scan
-      uses: veracode/veracode-uploadandscan-action@master
+  #  - name: Veracode scan
+    #  uses: veracode/veracode-uploadandscan-action@master
+     # with:
+      #  filepath: 'HelloWorld/target/'
+       # vid: 'eb2e5e1210cf22ea1f46302694d7e34c'
+        #vkey: '189c653a023307de5b4aab640a8c77fef4707d3a90814239c03ca7c1cbaa8e8ca49c565a86078d746c9b49de21c24a65229ae1a1a0514a090cc73ea07ca810aa'
+        #createsandbox: 'true'
+        #sandboxname: 'SANDBOXNAME'
+        #scantimeout: 15
+        #exclude: '*.js'
+        #include: '*.war'
+        #criticality: 'Medium'
+        
+    - name: Synopsys Scan
+      uses: blackducksoftware/github-action@v2.2
       with:
-        filepath: 'HelloWorld/target/'
-        vid: 'eb2e5e1210cf22ea1f46302694d7e34c'
-        vkey: '189c653a023307de5b4aab640a8c77fef4707d3a90814239c03ca7c1cbaa8e8ca49c565a86078d746c9b49de21c24a65229ae1a1a0514a090cc73ea07ca810aa'
-        createsandbox: 'true'
-        sandboxname: 'SANDBOXNAME'
-        scantimeout: 15
-        exclude: '*.js'
-        include: '*.war'
-        criticality: 'Medium'
+          version: 7
+          blackduck.url: https://poc46.blackduck.synopsys.com/
+          blackduck.api.token: ZjJlNTFkMmItNmNiMS00NmI2LTk3NTYtZDA2ZDZlODRmYWYxOmViODg0NTE4LTNkZmItNDNmNy04MjI1LTQwNjNlOWY3MzIzOQ==
+          args: --detect.risk.report.pdf=true
+    
+     
+        
+        
+        
+        
+        
+        
+        
