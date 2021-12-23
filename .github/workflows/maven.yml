@@ -64,7 +64,10 @@ jobs:
      #   token: ${{secrets.COVERITY_TOKEN}}
         
         
-        
+         
+   # - name: Test drives with username
+    #  run: |
+     #      net use X: \\hqcelfs01\xchange\ 'Aep%1503' /user:s316735;
         
         
         
