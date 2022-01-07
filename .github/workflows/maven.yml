@@ -31,11 +31,18 @@ jobs:
       #run: echo "::set-output name=date::$(date +'dd/MM/yyyy')"
       run:  echo "::set-output name=date::$( Get-Date -Format "MM-dd-yyyy")"
       
-    - name: Build with Maven
-      run: |
-           cd HelloWorld;
-           echo "Type is: ${{ github.event.inputs.Type }}"
-           mvn clean install '-Ddate= ${{ steps.date.outputs.date }}' '-Dtype=${{ github.event.inputs.Type }}'
+    - name: Coveirty scan
+      uses: vapier/coverity-scan-action@v0
+      with:
+        project: HelloWorld
+        token: '{"key":"3BC8B17128B2D068D5414C1881B70A9A","id":10032,"type":"Coverity authentication key","username":"borra_visalakshi","comments":{"port":null,"host":null,"description":"s316735/CI-CD","creationDate":"2022-01-07T10:34:04.261Z","ssl":"true","expirationDate":"2052-01-07T10:34:04.200Z"},"domain":"local","version":2}'
+   
+      
+   # - name: Build with Maven
+    #  run: |
+     #      cd HelloWorld;
+      #     echo "Type is: ${{ github.event.inputs.Type }}"
+        #   mvn clean install '-Ddate= ${{ steps.date.outputs.date }}' '-Dtype=${{ github.event.inputs.Type }}'
   #  - name: Veracode scan
     #  uses: veracode/veracode-uploadandscan-action@master
      # with:
@@ -49,13 +56,13 @@ jobs:
         #include: '*.war'
         #criticality: 'Medium'
         
-    - name: Synopsys Scan
-      uses: blackducksoftware/github-action@v2.2
-      with:
-          version: 7
-          blackduck.url: https://poc46.blackduck.synopsys.com/
-          blackduck.api.token: ZjJlNTFkMmItNmNiMS00NmI2LTk3NTYtZDA2ZDZlODRmYWYxOmViODg0NTE4LTNkZmItNDNmNy04MjI1LTQwNjNlOWY3MzIzOQ==
-          args: --detect.risk.report.pdf=true
+  #  - name: Synopsys Scan
+   #   uses: blackducksoftware/github-action@v2.2
+     # with:
+      #    version: 7
+       #   blackduck.url: https://poc46.blackduck.synopsys.com/
+        #  blackduck.api.token: ZjJlNTFkMmItNmNiMS00NmI2LTk3NTYtZDA2ZDZlODRmYWYxOmViODg0NTE4LTNkZmItNDNmNy04MjI1LTQwNjNlOWY3MzIzOQ==
+         # args: --detect.risk.report.pdf=true
     
   #  - name: coveirty Scan
    #   uses: vapier/coverity-scan-action@v0
